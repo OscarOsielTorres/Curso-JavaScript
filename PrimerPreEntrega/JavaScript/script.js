@@ -50,7 +50,7 @@ function clickbtnCalcular(){
     else if (imc >= 30 && imc <=39.9){
         alert("Su IMC es de:" +" " + Math.round(imc)+ " "  + "tienes obesidad" )
     }
-    else (imc >= 40)
+    else if (imc >= 40)
         alert("Su IMC es de:" +" " + Math.round(imc)+ " "  + "tienes obesidad extrema")
     
 }
