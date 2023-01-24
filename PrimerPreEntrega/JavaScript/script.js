@@ -7,12 +7,12 @@ window.onload = iniciar;
 
 for (let consulta = 1; consulta <= 3; consulta++) {
     
-    let ingresarNombre = prompt("Ingresar nombre");
-    if(ingresarNombre=="ESC"){
+    let ingresarNombre = prompt("Ingresar nombre o Esc para salir");
+    if(ingresarNombre=="ESC" || ingresarNombre == "esc"){
         break
     }
     while(ingresarNombre ==""){
-        ingresarNombre = prompt("No puede quedar en blanco")}
+        ingresarNombre = prompt("No puede quedar en blanco este espacio")}
         alert(" Consulta  N° "+ consulta +" Nombre: "+ingresarNombre);
     }
 
