@@ -39,6 +39,11 @@
 //         }
 //
 
+
+
+// SEGUNDO INTENTO CARRITO
+
+
 const platillos = [
 
     // Primer tiempo
@@ -148,7 +153,18 @@ if (platillo == "Lentejas" ||
 }
 
 let total = pedido.reduce((acc, element) => acc + element.precio * element.cantidadPlatillos, 0)
-console.log(`El Total a pagar por su pedido es de: ${total}`)    
+console.log(`El Total a pagar por su pedido es de: ${total}`)   
+
+for (const pedidos of pedido) {
+    console.log(pedido.monto)
+}
+
+let buscar = prompt("¿QUERES BUSCAR UNA FACTURA?, SI QUIERE CANCELAR INGRESE ESC")
+
+if (buscar != SALIR) {
+    const resultado = pedido.find((pedido) => pedido.nombre === buscar.toUpperCase())
+    alert(`PEDIDO ${pedido.indexOf(resultado)+1} con nombre ${resultado.nombrePlatillo} y monto ${resultado.precio}.  El total de todo es ${total}`)
+}
 
 
 
@@ -156,7 +172,7 @@ console.log(`El Total a pagar por su pedido es de: ${total}`)
 
 
 
-
+// ADAPTANDO EJEMPLO PROFE 
 
 // let cantidad_pedidos = Number(prompt("Ingrese La Cantidad de Pedidos a recibir")) //PIDO LA CANTIDAD PARA EL segundo CICLO DE FOR (comidas por pedido)
 
@@ -247,16 +263,16 @@ console.log(`El Total a pagar por su pedido es de: ${total}`)
 // //     return totalInterino / cantidad
 // // }
 // // //bonus track
-// // for (const pedido of pedidos) {
-// //     console.log(pedido.monto)
-// // }
+//  for (const pedido of pedidos) {
+//      console.log(pedido.monto)
+// }
 
-// // let buscar = prompt("¿QUERES BUSCAR UN Pedido?, SI QUIERE CANCELAR INGRESE ESC")
+// let buscar = prompt("¿QUERES BUSCAR UN Pedido?, SI QUIERE CANCELAR INGRESE ESC")
 
-// // if (buscar != SALIR) {
-// //     const resultado = pedidos.find((pedido) => pedido.nombre === buscar.toUpperCase())
-// //     alert(`PEDIDO ${pedidos.indexOf(resultado)+1} con nombre ${resultado.nombre} y monto ${resultado.monto}. El iva es ${resultado.montoConIva}. El total de todo es ${total}`)
-// // }
+//  if (buscar != SALIR) {
+//      const resultado = pedidos.find((pedido) => pedido.nombre === buscar.toUpperCase())
+//     alert(`PEDIDO ${pedidos.indexOf(resultado)+1} con nombre ${resultado.nombre} y monto ${resultado.monto}. El iva es ${resultado.montoConIva}. El total de todo es ${total}`)
+//  }
 
 
 
