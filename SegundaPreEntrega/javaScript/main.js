@@ -1,52 +1,154 @@
-// DECLARANADO VARIABLES
-let contadorComidas = 0 
+// PRIMER INTENTO CARRITO
 
-const pedido =[];
+// // DECLARANADO VARIABLES
+// let contadorComidas = 0
 
-// MOLDE PARA CREAR OBJETOS "COMIDAS"
-class Pedido{
-    constructor (primerTiempo, segundoTiempo, tercerTiempo) {
-    this.primerTiempo = primerTiempo;
-    this.segundoTiempo = segundoTiempo;
-    this.tercerTiempo = tercerTiempo;
+// const pedido =[];
+
+// // MOLDE PARA CREAR OBJETOS "COMIDAS"
+// class Pedido{
+//     constructor (primerTiempo, segundoTiempo, tercerTiempo) {
+//     this.primerTiempo = primerTiempo;
+//     this.segundoTiempo = segundoTiempo;
+//     this.tercerTiempo = tercerTiempo;
+//     }
+// }
+
+// // CREANDO NUEVOS OBJETOS
+// const comida1 = new Pedido ("Consome", "Arroz", "Tacos");
+// const comida2 = new Pedido ("Sopa", "Spaghetti", "Milanesa");
+// const comida3 = new Pedido ("Lentejas", "Chilaquiles", "Hamburguesa");
+
+// pedido.push(comida1, comida2, comida3);
+// console.log(pedido);
+
+// let precios = [60, 75, 80]
+// let primer_tiempo = ["Consome", "Sopa", "Lentejas"];
+// let segundo_tiempo = ["Arroz", "Spaghetti", "Chilaquiles"];
+// let tercer_tiempo = ["Tacos", "Milanesa", "Hamburguesa"];
+
+// let menu_de_platillos = ["Consome", "Sopa", "Lentejas", "Arroz", "Spaghetti", "Chilaquiles", "Tacos", "Milanesa", "Hamburguesa"];
+
+// let search = prompt("ingrese el platillo que busca")
+
+// function buscarPlatillo(menu_de_platillos, search){
+//     for( let i =0; i < menu_de_platillos.length; i++){
+//         if (menu_de_platillos[i] === search) {
+//             console.log("El platillo pertenece al Primer Tiempo");
+//             break;
+//         }
+//
+
+const platillos = [
+
+    // Primer tiempo
+
+    {nombreDelPlatillo: "Lentejas", precio: 10 },
+    {nombreDelPlatillo: "Consome", precio: 10 },
+    {nombreDelPlatillo: "Sopa", precio: 10 },
+ 
+    // Segundo tiempo
+
+    {nombreDelPlatillo: "Arroz", precio: 10 },
+    {nombreDelPlatillo: "Pasta", precio: 10 },
+    {nombreDelPlatillo: "Chilaquiles", precio: 10 },
+ 
+    // Tercer tiempo
+    
+    {nombreDelPlatillo: "Tacos", precio: 10 },
+    {nombreDelPlatillo: "Milanesa", precio: 10 },
+    {nombreDelPlatillo: "Hamburguesa", precio: 10 },
+];
+
+let pedido =[];
+const SALIR = "no"
+
+let saludoBienvenida = alert("Hola, le gustaria iniciar su orden?");
+let opcionElegida = prompt(`Si o ${SALIR} para salir`)
+
+while (opcionElegida != "si" && opcionElegida != `${SALIR}`){
+    alert("Por favor ingrese una opción valida")
+    opcionElegida = prompt("Desea comprar algo ¿ si o no ?")
+}
+    
+if (opcionElegida == "si"){
+    alert ("Te mostraré el menú")
+
+ let menu = platillos.map((platillos) => platillos.nombreDelPlatillo + " " + "$" + platillos.precio );
+ alert(menu.join( " " + "--" + " "))
+    
+} else if (opcionElegida == `${SALIR}`){
+    alert("Gracias por visitarnos, Vuelve pronto")
+}
+while (opcionElegida == "si"){
+    let platillo = prompt("Agrega el platillo de tu eleccion al pedido")
+    let precio = 0
+
+if (platillo == "Lentejas" || 
+    platillo == "Consome"  ||
+    platillo == "Sopa"     ||
+    platillo == "Arroz"    ||
+    platillo == "Pasta"    ||
+    platillo == "Chilaquiles" ||
+    platillo == "Tacos" ||
+    platillo == "Milanesa" ||
+    platillo == "Hamburguesa"){
+
+    switch (platillo){
+
+            case "Lentejas": 
+                precio = 10 ;
+                break;
+            case "Consome": 
+                precio = 10 ;
+                break;
+            case "Sopa": 
+                precio = 10 ;
+                break;
+            case "Arroz": 
+                precio = 10 ;
+                break;
+            case "Pasta": 
+                precio = 10 ;
+                break;
+            case "Chilaquiles": 
+                precio = 10 ;
+                break;
+            case "Tacos": 
+                precio = 10 ;
+                break;
+            case "Milanesa": 
+                precio = 10 ;
+                break;
+            case "Hamburguesa": 
+                precio = 10 ;
+                break;
+                default:
+                break;
+        }
+
+    let cantidadPlatillos = Number(prompt("¿Cuántas (unidades) deseas llevar de dicho platillo? "))
+    
+    pedido.push({platillo, cantidadPlatillos, precio})
+    console.log(pedido)
+    } else {
+        alert("Ese platillo no esta en el menú")
+    }
+
+    opcionElegida = prompt("Desea continuar agregando productos al pedido?")
+    while (opcionElegida == `${SALIR}`){
+        alert("Gracias por tu compra!, Hasta pronto!");
+       
+           
+          
+     pedido.forEach((pedidoFinal) => { console.log(`Platillo: ${pedidoFinal.platillo}, Cantidad: ${pedidoFinal.cantidadPlatillos}, Total a pagar por producto: ${pedidoFinal.cantidadPlatillos * pedidoFinal.precio}`)
+        })
+        break;
     }
 }
 
-// CREANDO NUEVOS OBJETOS 
-const comida1 = new Pedido ("Consome", "Arroz", "Tacos");
-const comida2 = new Pedido ("Sopa", "Spaghetti", "Milanesa");
-const comida3 = new Pedido ("Lentejas", "Chilaquiles", "Hamburguesa");
-
-pedido.push(comida1, comida2, comida3);
-console.log(pedido);
-
-
-let primer_tiempo = ["Consome", "Sopa", "Lentejas"];
-let segundo_tiempo = ["Arroz", "Spaghetti", "Chilaquiles"];
-let tercer_tiempo = ["Tacos", "Milanesa", "Hamburguesa"];
-
-let menu_de_platillos = ["Consome", "Sopa", "Lentejas", "Arroz", "Spaghetti", "Chilaquiles", "Tacos", "Milanesa", "Hamburguesa"];
-
-let search = prompt("ingrese el platillo que busca")
-
-function buscarPlatillo(menu_de_platillos, search){
-    for( let i =0; i < menu_de_platillos.length; i++){
-        if (menu_de_platillos[i] === search) {
-            console.log("El platillo pertenece al Primer Tiempo");
-            break;
-        }
-    } 
- }
-
-
-
-
-
-
-
-
-
-
+let total = pedido.reduce((acc, element) => acc + element.precio * element.cantidadPlatillos, 0)
+console.log(`El Total a pagar por su pedido es de: ${total}`)    
 
 
 
@@ -81,7 +183,7 @@ function buscarPlatillo(menu_de_platillos, search){
 // }
 //     while(nombre ==""){
 //         nombre = prompt("No puede quedar en blanco este espacio")}
-        
+
 //     }
 
 //     class Pedido {
@@ -110,19 +212,9 @@ function buscarPlatillo(menu_de_platillos, search){
 
 // for (let pedido = 1; pedido <= cantidad_pedidos; pedido++) {
 //     let pedido = prompt(`ingrese nombre del pedido o ${SALIR} para salir`)
-//     }
-    
-
-// let precios = [60, 75, 80]
-
-// //     for (let index = 0; index < array.length; index++) {
-// //         const element = array[index];
-        
-// //     }
-
-// //     let monto = precios[0];
-// //     pedidos.push(new Pedido(nombre, monto));
-// //     total = calcularTotal(pedidos)
+//     let monto = precios[0];
+//     pedidos.push(new Pedido(nombre, monto));
+//     total = calcularTotal(pedidos)
 //     console.log(`PEDIDO ${pedido} con nombre ${nombre} y monto ${monto}. El total de todo es ${total}`)
 
 
