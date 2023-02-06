@@ -98,6 +98,7 @@ if (platillo == "Lentejas" ||
     platillo == "Tacos" ||
     platillo == "Milanesa" ||
     platillo == "Hamburguesa"){
+        
 
     switch (platillo){
 
@@ -155,7 +156,7 @@ if (platillo == "Lentejas" ||
 let total = pedido.reduce((acc, element) => acc + element.precio * element.cantidadPlatillos, 0)
 console.log(`El Total a pagar por su pedido es de: ${total}`)   
 
-for (const pedidos of pedido) {
+for (const pedido of pedidos) {
     console.log(pedido.monto)
 }
 
