@@ -30,14 +30,23 @@ function addProdAlCarrito (e){
 }
 // LLENANDO EL CARRITO HACIENDOLE PUSH DE LOS NUEVOS PRODCTOS
 function addNewProduct(nuevoItem){
+
+    // Agregando tiempo de show del alert producto añadido
     
-    const elementoInput = tbody.getElementsByClassName(".inputElement")
+    const alert = document.querySelector('.alert')
+    setTimeout( function(){
+        alert.classList.add('hide')
+        }, 2000)
+        alert.classList.remove('hide')
+    
+const elementoInput = tbody.getElementsByClassName(".inputElement")
+
 
 //  CICLO FOR PARA RECORRER el carrito en busqueda del mismo producto 
-for (let index = 0; index < carrito.length; index++) {
-    if(carrito[index].producto.trim() === nuevoItem.producto.trim()){
-        carrito[index].cantidad++;
-        let valorInput = elementoInput[index]
+for (let i = 0; i < carrito.length; i++) {
+    if(carrito[i].producto.trim() === nuevoItem.producto.trim()){
+        carrito[i].cantidad++;
+        let valorInput = elementoInput[i]
         valorInput.value++;
         totalCarrito()
         return null;
@@ -71,7 +80,7 @@ function actualizarCarrito(){
         tbody.append(tr)
 
         tr.querySelector(".borrar").addEventListener('click',removeItemCarrito)
-        tr.querySelector(".inputElement").addEventListener('change', sumarCantidad)
+        // tr.querySelector(".inputElement").addEventListener('change', sumarCantidad)
 
     })
     totalCarrito()
@@ -89,6 +98,7 @@ function totalCarrito(){
     })
 
     totalCarrito.innerHTML = `Total $${total}`
+    addLocalStorage()
 
 
 }
@@ -97,15 +107,23 @@ function totalCarrito(){
 function removeItemCarrito(e){
     const botonBorrar = e.target
     let tr = botonBorrar.closest("prodCarrito")
-    const title = tr.querySelector(".title").textContent;
+    const title = tr.querySelector(".producto").textContent;
 
     for (let i = 0; i < carrito.length; i++) {
-        if (carrito[i].title.trim() === title.trim()){
+        if (carrito[i].nombreProd.trim() === nombreProd.trim()){
             carrito.splice(i,1)
-        
         }
-        
     }
+
+    // Agregando tiempo de show del alert producto removido
+    
+    const alert = document.querySelector('.alert')
+    setTimeout( function(){
+        alert.classList.add('remove')
+        }, 2000)
+        alert.classList.remove('remove')
+
+        
     tr.remove()
     totalCarrito()
 
@@ -113,6 +131,28 @@ function removeItemCarrito(e){
 
 
 function sumarCantidad(e){
-    let sumaInput = e.target;
-    const tr = sumarCantidad
+    const sumaInput = e.target;
+    let tr = sumaInput.closest('.prodCarrito')
+    const title = tr.querySelector('.producto').textContent;
+    carrito.forEach((prod) => {
+        if(producto.nombreProd.trim() === nombreProd)
+        sumaInput.value < 1 ?(sumaInput.value = 1) : sumaInput.value;
+        producto.cantidad = sumaInput.value;
+        totalCarrito()
+
+    })
+}
+
+function addLocalStorage(){
+    localStorage.setItem("carrito",JSON.stringify(carrito))
+
+}
+
+window.onload = function(){
+    const storage = JSON.parse(localStorage.getItem('carrito'));
+    if(storage){ 
+        carrito = storage;
+        actualizarCarrito()
+
+    }
 }
