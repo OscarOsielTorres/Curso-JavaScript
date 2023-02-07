@@ -15,25 +15,29 @@ ClickButton.forEach(btn => {
 // FUNCION AGREGAR AL CARRITO
 function addProdAlCarrito (e){
     let boton = e.target
-    let producto = boton.closest('.card')
-    let nombreProd = producto.querySelector('.card-title').textContent;
-    let precioProd = producto.querySelector('.precio').textContent;
-    let imgProd =  producto.querySelector('.card-img-top').src;
+    let item = boton.closest('.card')
+    let nombreProd = item.querySelector('.card-title').textContent;
+    let precioProd = item.querySelector('.precio').textContent;
+    let imgProd =  item.querySelector('.card-img-top').src;
 
     const nuevoItem = {
-        producto: nombreProd,
+        title: nombreProd,
         precio: precioProd,
         img: imgProd,
         cantidad: 1
     }
+
+
     addNewProduct(nuevoItem)
 }
+
 // LLENANDO EL CARRITO HACIENDOLE PUSH DE LOS NUEVOS PRODCTOS
 function addNewProduct(nuevoItem){
 
     // Agregando tiempo de show del alert producto añadido
     
     const alert = document.querySelector('.alert')
+
     setTimeout( function(){
         alert.classList.add('hide')
         }, 2000)
@@ -42,9 +46,9 @@ function addNewProduct(nuevoItem){
 const elementoInput = tbody.getElementsByClassName(".inputElement")
 
 
-//  CICLO FOR PARA RECORRER el carrito en busqueda del mismo producto 
+//  CICLO FOR PARA RECORRER el carrito en busqueda del mismo producto
 for (let i = 0; i < carrito.length; i++) {
-    if(carrito[i].producto.trim() === nuevoItem.producto.trim()){
+    if(carrito[i].title.trim() === nuevoItem.title.trim()){
         carrito[i].cantidad++;
         let valorInput = elementoInput[i]
         valorInput.value++;
@@ -54,25 +58,26 @@ for (let i = 0; i < carrito.length; i++) {
     }
     
 }
+
     carrito.push(nuevoItem)
-    actualizarCarrito()
+    actualizarCarrito() 
 }
 
 function actualizarCarrito(){
-    tbody.innerHTML = ""
-    carrito.map(prod => {
+    tbody.innerHTML = ''
+    carrito.map(item => {
         const tr = document.createElement('tr')
         tr.classList.add('prodCarrito')
         const Contenido = 
         `<th scope="row">1</th>
         <td class="tabla_productos">
-        <img src= ${prod.img} alt="">
-        <h6 class="title"> ${prod.producto} </h6></td>
+        <img src= ${item.img} alt="">
+        <h6 class="title"> ${item.title} </h6></td>
         
-        <td class="tabla_precios"><p>${prod.precio}</p></td>
+        <td class="tabla_precios"><p>${item.precio}</p></td>
         
         <td class="tabla_cantidad">
-            <input type="number" min="1" value=${prod.cantidad} class="inputElement">
+            <input type="number" min="1" value=${item.cantidad} class="inputElement">
             <button class="borrar btn btn-danger">X</button>
         </td>`
 
@@ -80,7 +85,7 @@ function actualizarCarrito(){
         tbody.append(tr)
 
         tr.querySelector(".borrar").addEventListener('click',removeItemCarrito)
-        // tr.querySelector(".inputElement").addEventListener('change', sumarCantidad)
+        tr.querySelector(".inputElement").addEventListener('change', sumarCantidad)
 
     })
     totalCarrito()
@@ -92,9 +97,9 @@ function actualizarCarrito(){
 function totalCarrito(){
     let total = 0;
     const totalCarrito = document.querySelector(".totalCarrito");
-    carrito.forEach((prod) => {
-        let precio = Number(prod.precio.replace("$",'' ))
-        total = total + precio*prod.cantidad
+    carrito.forEach((item) => {
+        let precio = Number(item.precio.replace("$",'' ))
+        total = total + precio*item.cantidad
     })
 
     totalCarrito.innerHTML = `Total $${total}`
@@ -107,10 +112,10 @@ function totalCarrito(){
 function removeItemCarrito(e){
     const botonBorrar = e.target
     let tr = botonBorrar.closest("prodCarrito")
-    const title = tr.querySelector(".producto").textContent;
+    const title = tr.querySelector(".title").textContent;
 
     for (let i = 0; i < carrito.length; i++) {
-        if (carrito[i].nombreProd.trim() === nombreProd.trim()){
+        if (carrito[i].title.trim() === title.trim()){
             carrito.splice(i,1)
         }
     }
@@ -133,11 +138,13 @@ function removeItemCarrito(e){
 function sumarCantidad(e){
     const sumaInput = e.target;
     let tr = sumaInput.closest('.prodCarrito')
-    const title = tr.querySelector('.producto').textContent;
-    carrito.forEach((prod) => {
-        if(producto.nombreProd.trim() === nombreProd)
-        sumaInput.value < 1 ?(sumaInput.value = 1) : sumaInput.value;
-        producto.cantidad = sumaInput.value;
+    const title = tr.querySelector('.title').textContent;
+    carrito.forEach((item) => {
+        if(item.title.trim() === title)
+
+    // OPERADOR TERNARIO
+        sumaInput.value < 1 ? (sumaInput.value = 1) : sumaInput.value;
+        item.cantidad = sumaInput.value;
         totalCarrito()
 
     })
