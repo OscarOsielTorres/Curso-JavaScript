@@ -43,7 +43,7 @@ function addNewProduct(nuevoItem){
         }, 2000)
         alert.classList.remove('hide')
     
-const elementoInput = tbody.getElementsByClassName(".inputElement")
+const elementoInput = tbody.getElementsByClassName("inputElement")
 
 
 //  CICLO FOR PARA RECORRER el carrito en busqueda del mismo producto
@@ -51,7 +51,7 @@ for (let i = 0; i < carrito.length; i++) {
     if(carrito[i].title.trim() === nuevoItem.title.trim()){
         carrito[i].cantidad++;
         let valorInput = elementoInput[i]
-        valorInput.value++;
+        valorInput.value++
         totalCarrito()
         return null;
 
@@ -111,7 +111,7 @@ function totalCarrito(){
 // FUNCION PARA EL BOTON BORRAR DEL CARRITO 
 function removeItemCarrito(e){
     const botonBorrar = e.target
-    let tr = botonBorrar.closest("prodCarrito")
+    let tr = botonBorrar.closest(".prodCarrito")
     const title = tr.querySelector(".title").textContent;
 
     for (let i = 0; i < carrito.length; i++) {
@@ -122,7 +122,7 @@ function removeItemCarrito(e){
 
     // Agregando tiempo de show del alert producto removido
     
-    const alert = document.querySelector('.alert')
+    const alert = document.querySelector('.remove')
     setTimeout( function(){
         alert.classList.add('remove')
         }, 2000)
