@@ -17,8 +17,9 @@ let carrito = {}
 document.addEventListener('DOMContentLoaded', () => {
     fetchData()
     if(localStorage.getItem('carrito')){
-        
-    }
+    carrito = JSON.parse(localStorage.getItem('carrito'))
+    hacerCarrito()}
+    
 })
 
 prods.addEventListener('click', e => {
@@ -100,7 +101,8 @@ let hacerCarrito = () => {
     items.appendChild(fragment)
     hacerFooterCarrito()
 
-    
+    localStorage.setItem('carrito', JSON.stringify(carrito))
+
 }
 
 let hacerFooterCarrito = () => {
@@ -128,6 +130,7 @@ let hacerFooterCarrito = () => {
         carrito = {}
         hacerCarrito()
     })
+    
 }
 
 let btnAgrQui = e => {
@@ -151,5 +154,22 @@ if(e.target.classList.contains('btn-danger')){
 e.stopPropagation()
 }
 
+// function addLocalStorage(){
+//     localStorage.setItem('carrito',JSON.stringify(carrito))
+// }
+
+// window.onload = function(){
+//     const storage = JSON.parse(localStorage.getItem('carrito'));
+//     if(storage){ 
+//         carrito = storage;
+//         hacerCarrito()
+//     }
+// }
 
 
+// // fuentes de ayuda 
+// https://developer.mozilla.org/es/docs/Web/API/Document/createDocumentFragment
+// https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch
+// https://developer.mozilla.org/es/docs/Web/API/Node/appendChild
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Object/values
+// https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/try...catch
