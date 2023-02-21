@@ -20,7 +20,7 @@
 </head>
 <body>
 
-    <header class="container-fluid  position-sticky top-0">
+    <header class="container-fluid top-0">
         <ul class="nav nav-pills mb-3 py-3 container" id="pills-tab" role="tablist">
         <li class="nav-item text-success" role="presentation">
             <a
@@ -85,12 +85,14 @@
 
     
     <div class="container">
+
         <h1 class="text-center text-danger" > Tienda de Abarrotes MitOs</h1>
         <hr>
         <div class="row" id="prods"></div>
     </div>
 
     <template id="template-card">
+
         <div class="col-12 mb-2 col-md-4">
             <div class="card">
             <div class="card-body">
@@ -103,8 +105,51 @@
         </div>
     </template>
 
+    <template id="template-carrito">
 
+        <tr>
+        <th scope="row">id</th>
+        <td>Producto</td>
+        <td>1</td>
+        <td>
+            <button class="btn btn-success btn-sm"> + </button>
+            <button class="btn btn-danger btn-sm"> - </button>
+        </td>
+        <td>$ <span>precio</span></td>
+        </tr>
+    </template>
 
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Producto</th>
+            <th scope="col">Cantidad</th>
+            <th scope="col">Agregar/Quitar</th>
+            <th scope="col">Total</th>
+        </tr>
+        </thead>
+        <tbody id="items"></tbody>
+        
+        <tfoot>
+
+        <tr id="footer">
+
+            <th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>
+        </tr>
+        </tfoot>
+    </table>
+
+    <template id="template-footer">
+        <th scope="row" colspan="2">Total productos</th>
+        <td>10</td>
+        <td>
+            <button class="btn btn-danger btn-sm" id="vaciar-carrito">
+            Comprar 
+            </button>
+        </td>
+        <td class="font-weight-bold">$ <span>5000</span></td>
+    </template>
         
 
 </main>
