@@ -7,6 +7,7 @@ let templateCard = document.getElementById('template-card').content
 let templateFooter = document.getElementById('template-footer').content
 let templateCarrito = document.getElementById('template-carrito').content
 let fragment = document.createDocumentFragment()
+
 // OBJETO CARRITO VACIO
 let carrito = {}
 
@@ -15,10 +16,17 @@ let carrito = {}
 
 document.addEventListener('DOMContentLoaded', () => {
     fetchData()
+    if(localStorage.getItem('carrito')){
+        
+    }
 })
 
 prods.addEventListener('click', e => {
     addProdCarrito(e)
+})
+
+items.addEventListener('click', e => { 
+    btnAgrQui(e)
 })
 
 const fetchData = async () => {
@@ -90,4 +98,58 @@ let hacerCarrito = () => {
 
     })
     items.appendChild(fragment)
+    hacerFooterCarrito()
+
+    
 }
+
+let hacerFooterCarrito = () => {
+    footer.innerHTML = ''
+    if(Object.keys(carrito).length === 0 ){
+        footer.innerHTML = `<th scope="row" colspan="5">Carrito vacío - comience a comprar!</th>`
+        return
+    }
+    
+    // SUMAR CANTIDADES TOTALES ASI COMO PRECIO TOTAL DEL CARRITO
+
+    let sumaCantidades = Object.values(carrito).reduce((acc, {cantidad}) => acc + cantidad,0)
+    let sumaTotalPrecio = Object.values(carrito).reduce((acc,{cantidad,precio}) => acc + cantidad * precio,0)
+
+    templateFooter.querySelectorAll('td')[0].textContent = sumaCantidades
+    templateFooter.querySelector('span').textContent = sumaTotalPrecio
+
+    let clone = templateFooter.cloneNode(true)
+    fragment.appendChild(clone)
+    footer.appendChild(fragment)
+
+
+    let btnComprar = document.getElementById('vaciar-carrito')
+    btnComprar.addEventListener('click', () => {
+        carrito = {}
+        hacerCarrito()
+    })
+}
+
+let btnAgrQui = e => {
+    if(e.target.classList.contains('btn-success')){
+
+    let producto = carrito[e.target.dataset.id]
+    producto.cantidad++
+    carrito[e.target.dataset.id] = {...producto }
+    hacerCarrito()
+}
+
+if(e.target.classList.contains('btn-danger')){
+    let producto = carrito[e.target.dataset.id]
+    producto.cantidad--
+    if(producto.cantidad  === 0) {
+        delete carrito[e.target.dataset.id]
+    } 
+    hacerCarrito()
+
+}
+e.stopPropagation()
+}
+
+
+
