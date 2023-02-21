@@ -74,235 +74,37 @@
 
 
 
-    <!-- ALERTS PARA PRODUCTO AÑADIDO Y QUITADO -->
+    <!-- ALERTS PARA PRODUCTO AÑADIDO Y QUITADO
     <div class="alert container position-sticky top-0 alert-success hide" role="alert">
         Producto Añadido al carrito!
     </div>
 
     <div class="alert container position-sticky top-0 alert-danger remove" role="alert">
         Producto removido!
-    </div>
+    </div> -->
 
-<main> 
-
+    
+    <div class="container">
         <h1 class="text-center text-danger" > Tienda de Abarrotes MitOs</h1>
+        <hr>
+        <div class="row" id="prods"></div>
+    </div>
+
+    <template id="template-card">
+        <div class="col-12 mb-2 ">
+            <div class="card">
+            <div class="card-body">
+            <h5>Titulo</h5>
+            <p>precio</p>
+            <button class="btn btn-dark">Comprar</button>
+            </div>
+            </div>
+        </div>
+    </template>
+
+
+
         
-    <!-- PESTAÑA HOME DEL NAVBAR -->
-        <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade " id="pills-home"role="tabpanel" aria-labelledby="pills-home-tab" ></div>
-
-    <!-- PESTAÑA DE PRODUCTOS DEL NAVBAR -->
-    <div class="tab-pane fade show active container"id="pills-profile" role="tabpanel"aria-labelledby="pills-profile-tab">
-
-    <h2 class="text-white text-center mt-2 mb-2">TODOS LOS PRODUCTOS</h2>
-    <div class="row row-cols-sm-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4">
-
-        <!-- PRODUCTO 1  -->
-            <div class="col d-flex justify-content-center mb-4 gap-2">
-        
-            <div class="card shadow mb-1 rounded" style="width: 25rem;">
-                <h4 class="card-title pt-2 text-center text">Leche Santa Clara</h4>   
-                <img src="./Img/LecheSC.jpeg" class="card-img-top" alt="lechesantaclara">
-                <div class="card-body ">
-                
-                <p class="card-text description">Leche Santa Clara Entera. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,,marli</p>
-                <h5 class="text-right">Precio: <span class="precio">$5</span></h5>
-
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-success button">Agregar al carrito</a>
-                        </div>
-            </div>
-            </div>
-        
-            </div>
-
-        <!-- PRODUCTO 2  -->
-        <div class="col d-flex justify-content-center mb-4 gap-2">
-
-
-            
-            <div class="card shadow mb-1 rounded" style="width: 25rem;">
-                <h4 class="card-title pt-2 text-center text">Gomitas</h4>   
-                <img src="./Img/Gomitas.png" class="card-img-top" alt="lechesantaclara">
-                <div class="card-body ">
-                     
-                <p class="card-text description">Gomitas. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,,marli</p>
-                <h5 class="text-right">Precio: <span class="precio">$5</span></h5>
-
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-success button">Agregar al carrito</a>
-                        </div>
-            </div>
-            </div>
-          
-
-        </div>
-
-        <!-- PRODUCTO 3  -->
-        <div class="col d-flex justify-content-center mb-4 gap-2">
-
-
-            
-    <div class="card shadow mb-1 rounded" style="width: 25rem;">
-        <h4 class="card-title pt-2 text-center text">Chocolate M&M</h4>   
-        <img src="./Img/Chocolates.jpg" class="card-img-top" alt="lechesantaclara">
-        <div class="card-body ">
-             
-        <p class="card-text description">Chocolates M & M. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,,marli</p>
-        <h5 class="text-right">Precio: <span class="precio">$5</span></h5>
-
-            <div class="d-grid gap-2">
-                <button class="btn btn-success button">Agregar al carrito</a>
-                </div>
-    </div>
-    </div>
-  
-
-        </div> 
-
-        <!-- PRODUCTO 4  -->
-        <div class="col d-flex justify-content-center mb-4 gap-2">
-
-
-            
-    <div class="card shadow mb-1 rounded" style="width: 25rem;">
-        <h4 class="card-title pt-2 text-center text">Coca-Cola</h4>   
-        <img src="./Img/Coca.jpg" class="card-img-top" alt="lechesantaclara">
-        <div class="card-body ">
-             
-        <p class="card-text description">Refresco Coca-Cola. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,,marli</p>
-        <h5 class="text-right">Precio: <span class="precio">$5</span></h5>
-
-            <div class="d-grid gap-2">
-                <button class="btn btn-success button">Agregar al carrito</a>
-                </div>
-    </div>
-    </div>
-  
-
-        </div>
-
-        <!-- PRODUCTO 5  -->
-        <div class="col d-flex justify-content-center mb-4 gap-2">
-
-
-            
-    <div class="card shadow mb-1 rounded" style="width: 25rem;">
-        <h4 class="card-title pt-2 text-center text">Doritos Nachos</h4>   
-        <img src="./Img/DoritosNachos.png" class="card-img-top" alt="lechesantaclara">
-        <div class="card-body ">
-
-        <p class="card-text description">Loritos Nachos. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,,marli</p>
-        <h5 class="text-right">Precio: <span class="precio">$5</span></h5>
-
-            <div class="d-grid gap-2">
-                <button class="btn btn-success button">Agregar al carrito</a>
-                </div>
-    </div>
-    </div>
-
-
-        </div>
-
-        <!-- PRODUCTO 6  -->
-        <div class="col d-flex justify-content-center mb-4 gap-2">
-
-
-            
-    <div class="card shadow mb-1 rounded" style="width: 25rem;">
-        <h4 class="card-title pt-2 text-center text">Sabritas</h4>   
-        <img src="./Img/Papas.jpg" class="card-img-top" alt="lechesantaclara">
-        <div class="card-body ">
-             
-        <p class="card-text description">SABRITAS Receta CRUJIENTE. Flaming Hot</p>
-        <h5 class="text-right">Precio: <span class="precio">$5</span></h5>
-
-            <div class="d-grid gap-2">
-                <button class="btn btn-success button">Agregar al carrito</a>
-                </div>
-    </div>
-    </div>
-  
-
-        </div>
-
-        <!-- PRODUCTO 7  -->
-        <div class="col d-flex justify-content-center mb-4 gap-2">
-
-
-            
-    <div class="card shadow mb-1 rounded" style="width: 25rem;">
-        <h4 class="card-title pt-2 text-center text">Agua Embotellada</h4>   
-        <img src="./Img/Agua.jpeg" class="card-img-top" alt="lechesantaclara">
-        <div class="card-body ">             
-        <p class="card-text description">Agua Embotellada Bonafont. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,,marli</p>
-        <h5 class="text-right">Precio: <span class="precio">$5</span></h5>
-
-            <div class="d-grid gap-2">
-                <button class="btn btn-success button">Agregar al carrito</a>
-                </div>
-    </div>
-    </div>
-  
-
-        </div>
-
-        <!-- PRODUCTO 8  -->
-        <div class="col d-flex justify-content-center mb-4 gap-2">
-
-
-            
-    <div class="card shadow mb-1 rounded" style="width: 25rem;">
-        <h4 class="card-title pt-2 text-center text">Cerveza</h4>   
-        <img src="./Img/Cerveza.jpg" class="card-img-top" alt="lechesantaclara">
-        <div class="card-body ">
-
-        <p class="card-text description">Cerveza Modelo Especial. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo,,marli</p>
-        <h5 class="text-right">Precio: <span class="precio">$5</span></h5>
-
-            <div class="d-grid gap-2">
-                <button class="btn btn-success button">Agregar al carrito</a>
-                </div>
-
-                
-            </div>
-        </div>
-        </div>
-</div>
-</div>
-
-<!-- PESTAÑA CARRITO DEL NAVBAR Y SU CONTENIDO -->
-<div class="tab-pane fade carrito"id="pills-contact"role="tabpanel"aria-labelledby="pills-contact-tab">
-    
-    
-    <table class="table table-success table-striped">
-        <thead>
-        <tr>
-            <th scope="col">#</th>
-            <th scope="col">Producto</th>
-            <th scope="col">Precio</th>
-            <th scope="col">Cantidad</th>
-        </tr>
-        </thead>
-        <tbody class="tbody"></tbody>
-    </table>
-
-    <br>
-        <div class="row mx-4" >
-            <div class="col">
-                <h3 class="totalCarrito text-white"> Total: 0 </h3>
-                <div class="col d-flex justify-content-end">
-                    <button class="btn btn-success">COMPRAR</button>
-                </div>
-            </div>
-        </div>
-</div>
-
-
-
-
-
-
 
 </main>
     
@@ -314,7 +116,7 @@
 
     
     <!-- MIS SCRIPST -->
-    <script src="./JavaScript/carrito.js"></script>
+    <script src="./JavaScript/main.js"></script>
     <script src="./JavaScript/siguesahi.js"></script>
 </body>
 </html>
