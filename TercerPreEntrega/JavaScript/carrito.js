@@ -73,12 +73,10 @@ function actualizarCarrito(){
         <td class="tabla_productos">
         <img src= ${item.img} alt="">
         <h6 class="title"> ${item.title} </h6></td>
-        
         <td class="tabla_precios"><p>${item.precio}</p></td>
-        
         <td class="tabla_cantidad">
-            <input type="number" min="1" value=${item.cantidad} class="inputElement">
-            <button class="borrar btn btn-danger">X</button>
+        <input type="number" min="1" value=${item.cantidad} class="inputElement">
+        <button class="borrar btn btn-danger">X</button>
         </td>`
 
         tr.innerHTML = Contenido;
